@@ -5,8 +5,8 @@ import { useRouter, usePathname } from "../../../src/navigation";
 import { useState, useTransition } from "react";
 
 const languages = [
-  { code: "en", name: "English", flag: "🇺🇸" },
   { code: "es", name: "Español", flag: "🇪🇸" },
+  { code: "en", name: "English", flag: "🇺🇸" },
   { code: "fr", name: "Français", flag: "🇫🇷" },
 ];
 

@@ -2,22 +2,55 @@
   "navigation": {
     "home": "Home",
     "about": "About",
-    "portfolio": "Portfolio",
+    "projects": "Projects",
     "contact": "Contact"
   },
-  "home": {
-    "title": "Welcome to My Portfolio",
-    "subtitle": "Full Stack Developer & Designer",
-    "getStarted": "Get started by editing",
-    "saveChanges": "Save and see your changes instantly.",
-    "deployNow": "Deploy now",
-    "readDocs": "Read our docs",
-    "learn": "Learn",
-    "examples": "Examples",
-    "goToNextjs": "Go to nextjs.org"
+  "hero": {
+    "greeting": "Hi! I'm",
+    "name": "Your Name",
+    "title": "Frontend Developer",
+    "subtitle": "Specialist in React, Next.js and modern technologies",
+    "description": "I create exceptional web experiences with clean code and intuitive design. Passionate about frontend technologies and user experience.",
+    "cta": "View my projects",
+    "contact": "Contact me"
+  },
+  "about": {
+    "title": "About me",
+    "subtitle": "Frontend Developer passionate about creating exceptional web experiences",
+    "description": "With over 3 years of experience in frontend development, I specialize in React, Next.js, TypeScript and modern technologies. I love turning ideas into beautiful and functional digital products.",
+    "skills": "Skills",
+    "experience": "Experience",
+    "years": "years"
+  },
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "A selection of my most recent work",
+    "regular_projects": "Regular Projects",
+    "viewProject": "View Project",
+    "viewCode": "View Code",
+    "technologies": "Technologies"
+  },
+  "contact": {
+    "title": "Contact me",
+    "subtitle": "Do you have a project in mind? Let's talk!",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "error": "Error sending message. Please try again."
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "builtWith": "Built with Next.js and MUI"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode"
   },
   "meta": {
-    "title": "Portfolio - Full Stack Developer",
-    "description": "Professional portfolio showcasing web development projects and skills"
+    "title": "Your Name - Frontend Developer",
+    "description": "Professional portfolio of a frontend developer specialized in React, Next.js and modern technologies. Creating exceptional web experiences."
   }
 } 

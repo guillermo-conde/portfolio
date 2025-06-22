@@ -5,6 +5,14 @@
     "portfolio": "Portfolio",
     "contact": "Contact"
   },
+  "projects": {
+    "title": "Mes Projets",
+    "subtitle": "Une sélection de mes travaux les plus récents",
+    "regular_projects": "Projets Réguliers",
+    "viewProject": "Voir le Projet",
+    "viewCode": "Voir le Code",
+    "technologies": "Technologies"
+  },
   "home": {
     "title": "Bienvenue dans Mon Portfolio",
     "subtitle": "Développeur Full Stack et Designer",

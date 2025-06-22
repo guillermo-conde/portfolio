@@ -1,51 +1,69 @@
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "../globals.css";
+import { routing } from "../../src/i18n/routing";
 import Navigation from "./components/Navigation";
+import LocaleUpdater from "./components/LocaleUpdater";
+import SSRSafeThemeProvider from "./providers/SSRSafeTheme";
+import EmotionCacheProvider from "./providers/EmotionCacheProvider";
+import Footer from "./components/Footer";
+import type { Metadata } from "next";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "meta" });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Portfolio",
-  description:
-    "Professional portfolio showcasing web development projects and skills",
-};
-
-const locales = ["en", "es", "fr"];
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords:
+      "frontend developer, react, next.js, typescript, portfolio, web development",
+    authors: [{ name: "Tu Nombre" }],
+    creator: "Tu Nombre",
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+      locale: locale,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  // Ensure that the incoming `locale` is valid
-  if (!locales.includes(locale as any)) notFound();
+  const { locale } = await params;
+  if (!routing.locales.includes(locale as any)) notFound();
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <NextIntlClientProvider messages={messages}>
+    <NextIntlClientProvider messages={messages}>
+      <EmotionCacheProvider>
+        <SSRSafeThemeProvider>
+          <LocaleUpdater />
           <Navigation />
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+          <main>{children}</main>
+          <Footer />
+        </SSRSafeThemeProvider>
+      </EmotionCacheProvider>
+    </NextIntlClientProvider>
   );
 }

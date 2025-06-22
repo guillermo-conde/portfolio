@@ -2,22 +2,55 @@
   "navigation": {
     "home": "Inicio",
     "about": "Acerca de",
-    "portfolio": "Portafolio",
+    "projects": "Proyectos",
     "contact": "Contacto"
   },
-  "home": {
-    "title": "Bienvenido a Mi Portafolio",
-    "subtitle": "Desarrollador Full Stack y Diseñador",
-    "getStarted": "Comienza editando",
-    "saveChanges": "Guarda y ve tus cambios al instante.",
-    "deployNow": "Desplegar ahora",
-    "readDocs": "Lee nuestra documentación",
-    "learn": "Aprender",
-    "examples": "Ejemplos",
-    "goToNextjs": "Ir a nextjs.org"
+  "hero": {
+    "greeting": "¡Hola! Soy",
+    "name": "Tu Nombre",
+    "title": "Desarrollador Frontend",
+    "subtitle": "Especialista en React, Next.js y tecnologías modernas",
+    "description": "Creo experiencias web excepcionales con código limpio y diseño intuitivo. Apasionado por las tecnologías frontend y la experiencia de usuario.",
+    "cta": "Ver mis proyectos",
+    "contact": "Contactar"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "subtitle": "Desarrollador Frontend apasionado por crear experiencias web excepcionales",
+    "description": "Con más de 3 años de experiencia en desarrollo frontend, me especializo en React, Next.js, TypeScript y tecnologías modernas. Me encanta convertir ideas en productos digitales hermosos y funcionales.",
+    "skills": "Habilidades",
+    "experience": "Experiencia",
+    "years": "años"
+  },
+  "projects": {
+    "title": "Mis Proyectos",
+    "subtitle": "Una selección de mis trabajos más recientes",
+    "regular_projects": "Proyectos Regulares",
+    "viewProject": "Ver Proyecto",
+    "viewCode": "Ver Código",
+    "technologies": "Tecnologías"
+  },
+  "contact": {
+    "title": "Contáctame",
+    "subtitle": "¿Tienes un proyecto en mente? ¡Hablemos!",
+    "name": "Nombre",
+    "email": "Email",
+    "message": "Mensaje",
+    "send": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "success": "¡Mensaje enviado correctamente!",
+    "error": "Error al enviar el mensaje. Inténtalo de nuevo."
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados",
+    "builtWith": "Construido con Next.js y MUI"
+  },
+  "theme": {
+    "light": "Modo Claro",
+    "dark": "Modo Oscuro"
   },
   "meta": {
-    "title": "Portafolio - Desarrollador Full Stack",
-    "description": "Portafolio profesional que muestra proyectos de desarrollo web y habilidades"
+    "title": "Tu Nombre - Desarrollador Frontend",
+    "description": "Portfolio profesional de desarrollador frontend especializado en React, Next.js y tecnologías modernas. Creando experiencias web excepcionales."
   }
 } 
