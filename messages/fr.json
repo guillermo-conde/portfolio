@@ -1,0 +1,23 @@
+{
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Bienvenue dans Mon Portfolio",
+    "subtitle": "Développeur Full Stack et Designer",
+    "getStarted": "Commencez par modifier",
+    "saveChanges": "Sauvegardez et voyez vos changements instantanément.",
+    "deployNow": "Déployer maintenant",
+    "readDocs": "Lire notre documentation",
+    "learn": "Apprendre",
+    "examples": "Exemples",
+    "goToNextjs": "Aller sur nextjs.org"
+  },
+  "meta": {
+    "title": "Portfolio - Développeur Full Stack",
+    "description": "Portfolio professionnel présentant des projets de développement web et des compétences"
+  }
+} 
