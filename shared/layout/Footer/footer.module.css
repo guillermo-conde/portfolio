@@ -1,0 +1,16 @@
+.footer {
+  background: var(--footer-bg);
+  color: var(--color-text-inverse);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer p {
+  color: var(--footer-text);
+} 

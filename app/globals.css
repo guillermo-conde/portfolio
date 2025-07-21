@@ -1,42 +1,125 @@
+/* Theme System */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Theme (default) */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-secondary: #7c3aed;
+  --color-secondary-hover: #6d28d9;
+  
+  /* Background Colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: rgba(248, 250, 252, 0.8);
+  --color-bg-tertiary: #f8fafc;
+  --color-bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  
+  /* Text Colors */
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #64748b;
+  --color-text-muted: #94a3b8;
+  --color-text-inverse: #ffffff;
+  
+  /* Border & Surface Colors */
+  --color-border: #e2e8f0;
+  --color-border-light: rgba(0, 0, 0, 0.1);
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  
+  /* Shadow Colors */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+  --shadow-primary: 0 8px 25px rgba(37, 99, 235, 0.3);
+  --shadow-primary-hover: 0 12px 35px rgba(37, 99, 235, 0.4);
+  
+  /* Skill Bar & Progress */
+  --color-skill-bg: rgba(0, 0, 0, 0.1);
+  --color-skill-progress: linear-gradient(90deg, #2563eb, #7c3aed);
+  
+  /* Navigation */
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --nav-border: rgba(0, 0, 0, 0.1);
+  
+  /* Social Icons */
+  --social-email: #EA4335;
+  --social-linkedin: #0A66C2;
+  --social-github: #333333;
+  
+  /* Footer */
+  --footer-bg: #1e293b;
+  --footer-text: #94a3b8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark Theme */
+[data-theme="dark"] {
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-secondary: #8b5cf6;
+  --color-secondary-hover: #7c3aed;
+  
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: rgba(30, 41, 59, 0.8);
+  --color-bg-tertiary: #1e293b;
+  --color-bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-inverse: #0f172a;
+  
+  --color-border: #334155;
+  --color-border-light: rgba(255, 255, 255, 0.1);
+  --color-surface: #1e293b;
+  --color-surface-elevated: #334155;
+  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.4);
+  --shadow-primary: 0 8px 25px rgba(59, 130, 246, 0.3);
+  --shadow-primary-hover: 0 12px 35px rgba(59, 130, 246, 0.4);
+  
+  --color-skill-bg: rgba(255, 255, 255, 0.1);
+  --color-skill-progress: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  
+  --nav-bg: rgba(15, 23, 42, 0.95);
+  --nav-border: rgba(255, 255, 255, 0.1);
+  
+  --social-email: #EA4335;
+  --social-linkedin: #0A66C2;
+  --social-github: #f1f5f9;
+  
+  --footer-bg: #0f172a;
+  --footer-text: #64748b;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+/* Smooth transitions for theme changes */
+*,
+*::before,
+*::after {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+/* CSS Reset and Base Styles */
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background: var(--color-bg-gradient);
+  min-height: 100vh;
 }
