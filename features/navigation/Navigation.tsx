@@ -1,5 +1,6 @@
 import styles from "./navigation.module.css";
 import ThemeToggle from "../theme/ThemeToggle";
+import { LanguageSwitch } from "@/shared/ui/LanguageSwitch/LanguageSwitch";
 
 export default function Navigation() {
   return (
@@ -21,7 +22,10 @@ export default function Navigation() {
               <a href="#contact">Contact</a>
             </li>
           </ul>
-          <ThemeToggle />
+          <div className={styles.actions}>
+            <LanguageSwitch />
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </nav>

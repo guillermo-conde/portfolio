@@ -50,6 +50,12 @@
   color: var(--color-primary);
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .links {
