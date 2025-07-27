@@ -16,9 +16,74 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name - Frontend Developer",
+  title: "Guillermo Conde - Frontend Developer",
   description:
     "Professional portfolio of a frontend developer specialized in React, Next.js and modern technologies. Creating exceptional web experiences.",
+  metadataBase: new URL("https://guillermo-conde.com"),
+  openGraph: {
+    title: "Guillermo Conde - Frontend Developer",
+    description:
+      "Professional portfolio of a frontend developer specialized in React, Next.js and modern technologies. Creating exceptional web experiences.",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Guillermo Conde - Frontend Developer",
+    description:
+      "Professional portfolio of a frontend developer specialized in React, Next.js and modern technologies. Creating exceptional web experiences.",
+    images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://guillermo-conde.com",
+    languages: {
+      en: "https://guillermo-conde.com/en",
+      es: "https://guillermo-conde.com",
+    },
+  },
+  other: {
+    "application/ld+json": JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Guillermo Conde",
+      jobTitle: "Frontend Developer",
+      url: "https://guillermo-conde.com",
+      sameAs: [
+        "https://github.com/yourusername",
+        "https://linkedin.com/in/yourusername",
+      ],
+    }),
+    author: "Guillermo Conde",
+    viewport: "width=device-width, initial-scale=1",
+    "theme-color": "#000000", // Your brand color
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+  manifest: "/manifest.json",
+  keywords: [
+    "Guillermo Conde",
+    "Frontend Developer",
+    "React",
+    "Next.js",
+    "Portfolio",
+    "TailwindCSS",
+    "TypeScript",
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "Redux",
+    "Zustand",
+    "Shadcn",
+    "Axios",
+    "React Hook Form",
+    "React Query",
+    "TanStack Table",
+    "TanStack Query",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default async function RootLayout({

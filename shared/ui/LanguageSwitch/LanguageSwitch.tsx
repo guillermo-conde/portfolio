@@ -1,11 +1,12 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { Link } from "@/src/i18n/navigation";
+import { Link, usePathname } from "@/src/i18n/navigation";
 import styles from "./language-switch.module.css";
 
 export function LanguageSwitch() {
   const locale = useLocale();
+  const pathname = usePathname();
 
   const languages = [
     { code: "es", label: "ES", name: "Español" },
@@ -17,7 +18,7 @@ export function LanguageSwitch() {
       {languages.map((language) => (
         <Link
           key={language.code}
-          href={language.code}
+          href={pathname}
           locale={language.code}
           className={`${styles.languageBtn} ${
             locale === language.code ? styles.active : ""

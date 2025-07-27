@@ -1,6 +1,10 @@
+"use client";
 import styles from "./about.module.css";
+import { useTranslations } from "next-intl";
 
 export default function AboutSection() {
+  const t = useTranslations("about");
+
   const skills = [
     { name: "React", level: 95, category: "Frontend" },
     { name: "Next.js", level: 90, category: "Frontend" },
@@ -37,33 +41,25 @@ export default function AboutSection() {
     <section id="about" className={styles.about}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>About me</h2>
-          <p>
-            Frontend Developer passionate about creating exceptional web
-            experiences
-          </p>
+          <h2>{t("title")}</h2>
+          <p>{t("subtitle")}</p>
         </div>
 
         <div className={styles.content}>
           <div className={styles.text}>
-            <p className={styles.description}>
-              With over 3 years of experience in frontend development, I
-              specialize in React, Next.js, TypeScript and modern technologies.
-              I love turning ideas into beautiful and functional digital
-              products.
-            </p>
+            <p className={styles.description}>{t("description")}</p>
 
             <div className={styles.experienceBox}>
-              <h4>Experience</h4>
+              <h4>{t("experience")}</h4>
               <div className={styles.experienceItem}>
                 <div className={styles.experienceYears}>3+</div>
-                <span>years of experience</span>
+                <span>{t("years")}</span>
               </div>
             </div>
           </div>
 
           <div className={styles.skillsSection}>
-            <h4>Skills</h4>
+            <h4>{t("skills")}</h4>
             <div className={styles.skillsList}>
               {skills.map((skill) => (
                 <div key={skill.name} className={styles.skillItem}>

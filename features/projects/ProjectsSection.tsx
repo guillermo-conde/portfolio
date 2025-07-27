@@ -1,7 +1,10 @@
+"use client";
 import styles from "./projects.module.css";
 import { Button } from "../../shared/ui/Button/Button";
+import { useTranslations } from "next-intl";
 
 export default function ProjectsSection() {
+  const t = useTranslations("projects");
   const projects = [
     {
       id: 1,
@@ -39,8 +42,8 @@ export default function ProjectsSection() {
     <section id="projects" className={styles.projects}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>My Projects</h2>
-          <p>A selection of my most recent work</p>
+          <h2>{t("title")}</h2>
+          <p>{t("subtitle")}</p>
         </div>
 
         <div className={styles.grid}>
@@ -53,7 +56,7 @@ export default function ProjectsSection() {
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
                 <div className={styles.technologies}>
-                  <span>Technologies:</span>
+                  <span>{t("technologies")}:</span>
                   <div className={styles.techTags}>
                     {project.technologies.map((tech) => (
                       <span key={tech} className={styles.techTag}>
@@ -64,10 +67,10 @@ export default function ProjectsSection() {
                 </div>
                 <div className={styles.buttons}>
                   <Button href={project.liveUrl} variant="primary">
-                    View Project
+                    {t("viewProject")}
                   </Button>
                   <Button href={project.githubUrl} variant="outline">
-                    View Code
+                    {t("viewCode")}
                   </Button>
                 </div>
               </div>

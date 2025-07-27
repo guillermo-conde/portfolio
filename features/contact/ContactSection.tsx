@@ -2,8 +2,10 @@
 import { useState } from "react";
 import styles from "./contact.module.css";
 import { Button } from "../../shared/ui/Button/Button";
+import { useTranslations } from "next-intl";
 
 export default function ContactSection() {
+  const t = useTranslations("contact");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -53,15 +55,15 @@ export default function ContactSection() {
     <section id="contact" className={styles.contact}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>Contact me</h2>
-          <p>Do you have a project in mind? Let's talk!</p>
+          <h2>{t("title")}</h2>
+          <p>{t("subtitle")}</p>
         </div>
 
         <div className={styles.content}>
           <div className={styles.formContainer}>
             <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">{t("name")}</label>
                 <input
                   type="text"
                   id="name"
@@ -72,7 +74,7 @@ export default function ContactSection() {
                 />
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">{t("email")}</label>
                 <input
                   type="email"
                   id="email"
@@ -83,7 +85,7 @@ export default function ContactSection() {
                 />
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message">{t("message")}</label>
                 <textarea
                   id="message"
                   name="message"
@@ -94,18 +96,14 @@ export default function ContactSection() {
                 ></textarea>
               </div>
               <Button type="submit" variant="primary">
-                Send Message
+                {t("sendMessage")}
               </Button>
             </form>
           </div>
 
           <div className={styles.info}>
-            <h3>Let's Connect!</h3>
-            <p>
-              I'm always interested in new opportunities and exciting projects.
-              If you have an idea or just want to chat about frontend
-              development, don't hesitate to contact me.
-            </p>
+            <h3>{t("letsConnect")}</h3>
+            <p>{t("lestConnectSubtitle")}</p>
 
             <div className={styles.socialLinks}>
               {socialLinks.map((link, index) => (

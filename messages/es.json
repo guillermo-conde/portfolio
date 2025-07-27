@@ -36,14 +36,16 @@
     "name": "Nombre",
     "email": "Email",
     "message": "Mensaje",
-    "send": "Enviar Mensaje",
+    "sendMessage": "Enviar Mensaje",
+    "letsConnect": "¡Conectémonos!",
+    "lestConnectSubtitle": "Siempre estoy interesado en nuevas oportunidades y proyectos emocionantes. Si tienes una idea o simplemente quieres hablar sobre desarrollo frontend, no dudes en contactarme.",
     "sending": "Enviando...",
     "success": "¡Mensaje enviado correctamente!",
     "error": "Error al enviar el mensaje. Inténtalo de nuevo."
   },
   "footer": {
     "rights": "Todos los derechos reservados",
-    "builtWith": "Construido con Next.js y MUI"
+    "builtWith": "Construido con Next.js"
   },
   "theme": {
     "light": "Modo Claro",

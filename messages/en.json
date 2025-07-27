@@ -7,7 +7,7 @@
   },
   "hero": {
     "greeting": "Hi! I'm",
-    "name": "Your Name",
+    "name": "Guillermo Conde",
     "title": "Frontend Developer",
     "subtitle": "Specialist in React, Next.js and modern technologies",
     "description": "I create exceptional web experiences with clean code and intuitive design. Passionate about frontend technologies and user experience.",
@@ -36,21 +36,23 @@
     "name": "Name",
     "email": "Email",
     "message": "Message",
-    "send": "Send Message",
+    "sendMessage": "Send Message",
+    "letsConnect": "Let's Connect!",
+    "lestConnectSubtitle": "I'm always interested in new opportunities and exciting projects. If you have an idea or just want to chat about frontend development, don't hesitate to contact me.",
     "sending": "Sending...",
     "success": "Message sent successfully!",
     "error": "Error sending message. Please try again."
   },
   "footer": {
     "rights": "All rights reserved",
-    "builtWith": "Built with Next.js and MUI"
+    "builtWith": "Built with Next.js"
   },
   "theme": {
     "light": "Light Mode",
     "dark": "Dark Mode"
   },
   "meta": {
-    "title": "Your Name - Frontend Developer",
+    "title": "Guillermo Conde - Frontend Developer",
     "description": "Professional portfolio of a frontend developer specialized in React, Next.js and modern technologies. Creating exceptional web experiences."
   }
 } 
