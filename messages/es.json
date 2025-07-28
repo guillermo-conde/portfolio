@@ -7,7 +7,7 @@
   },
   "hero": {
     "greeting": "¡Hola! Soy",
-    "name": "Tu Nombre",
+    "name": "Guillermo Conde",
     "title": "Desarrollador Frontend",
     "subtitle": "Especialista en React, Next.js y tecnologías modernas",
     "description": "Creo experiencias web excepcionales con código limpio y diseño intuitivo. Apasionado por las tecnologías frontend y la experiencia de usuario.",
@@ -40,8 +40,8 @@
     "letsConnect": "¡Conectémonos!",
     "lestConnectSubtitle": "Siempre estoy interesado en nuevas oportunidades y proyectos emocionantes. Si tienes una idea o simplemente quieres hablar sobre desarrollo frontend, no dudes en contactarme.",
     "sending": "Enviando...",
-    "success": "¡Mensaje enviado correctamente!",
-    "error": "Error al enviar el mensaje. Inténtalo de nuevo."
+    "successMessage": "¡Mensaje enviado correctamente!",
+    "errorMessage": "Error al enviar el mensaje. Inténtalo de nuevo."
   },
   "footer": {
     "rights": "Todos los derechos reservados",
