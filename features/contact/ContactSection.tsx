@@ -21,8 +21,10 @@ export default function ContactSection() {
     setIsLoading(true);
     setMessage(null);
 
+    const form = e.currentTarget;
+
     try {
-      const formData = new FormData(e.currentTarget);
+      const formData = new FormData(form);
       const data = {
         name: formData.get("name") as string,
         email: formData.get("email") as string,
@@ -44,7 +46,7 @@ export default function ContactSection() {
           type: "success",
           text: t("successMessage") || "Message sent successfully!",
         });
-        e.currentTarget.reset();
+        form.reset();
       } else {
         setMessage({
           type: "error",

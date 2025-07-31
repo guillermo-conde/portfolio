@@ -1,9 +1,10 @@
+"use server";
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const emailTo = process.env.EMAIL_TO || "your-email@example.com";
-const resendDomain = process.env.RESEND_DOMAIN || "onboarding@resend.dev";
+const emailTo = process.env.EMAIL_TO;
+const resendDomain = process.env.RESEND_DOMAIN;
 
 export async function POST(request: NextRequest) {
   try {
