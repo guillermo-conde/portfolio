@@ -2,11 +2,13 @@
 import styles from "./contact.module.css";
 import { Button } from "../../shared/ui/Button/Button";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_URL || "";
 const github = process.env.NEXT_PUBLIC_GITHUB_URL || "";
 const email = process.env.NEXT_PUBLIC_EMAIL || "";
+const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
 
 export default function ContactSection() {
   const t = useTranslations("contact");
@@ -15,9 +17,20 @@ export default function ContactSection() {
     type: "success" | "error";
     text: string;
   } | null>(null);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!recaptchaToken) {
+      setMessage({
+        type: "error",
+        text: "Please complete the reCAPTCHA verification.",
+      });
+      return;
+    }
+
     setIsLoading(true);
     setMessage(null);
 
@@ -29,6 +42,7 @@ export default function ContactSection() {
         name: formData.get("name") as string,
         email: formData.get("email") as string,
         message: formData.get("message") as string,
+        recaptchaToken: recaptchaToken,
       };
 
       const response = await fetch("/api/contact", {
@@ -47,6 +61,8 @@ export default function ContactSection() {
           text: t("successMessage") || "Message sent successfully!",
         });
         form.reset();
+        setRecaptchaToken(null);
+        recaptchaRef.current?.reset();
       } else {
         setMessage({
           type: "error",
@@ -67,6 +83,10 @@ export default function ContactSection() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleRecaptchaChange = (token: string | null) => {
+    setRecaptchaToken(token);
   };
 
   const socialLinks = [
@@ -137,6 +157,16 @@ export default function ContactSection() {
                   disabled={isLoading}
                 ></textarea>
               </div>
+
+              <div className={styles.formGroup}>
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={recaptchaSiteKey}
+                  onChange={handleRecaptchaChange}
+                  size="normal"
+                />
+              </div>
+
               <Button type="submit" variant="primary" disabled={isLoading}>
                 {isLoading ? t("sending") || "Sending..." : t("sendMessage")}
               </Button>
