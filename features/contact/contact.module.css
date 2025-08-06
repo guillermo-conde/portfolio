@@ -102,17 +102,7 @@
   background: var(--color-bg-secondary);
 }
 
-/* reCAPTCHA v3 styling */
-.formGroup > div {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.5rem;
-}
 
-.formGroup > div > div {
-  transform: scale(0.9);
-  transform-origin: 0 0;
-}
 
 .info h3 {
   font-size: 2rem;

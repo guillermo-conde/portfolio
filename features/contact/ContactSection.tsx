@@ -2,8 +2,20 @@
 import styles from "./contact.module.css";
 import { Button } from "../../shared/ui/Button/Button";
 import { useTranslations } from "next-intl";
-import { useState, useRef } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+import { useState, useEffect } from "react";
+
+// TypeScript declarations for reCAPTCHA v3
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (callback: () => void) => void;
+      execute: (
+        siteKey: string,
+        options: { action: string }
+      ) => Promise<string>;
+    };
+  }
+}
 
 const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_URL || "";
 const github = process.env.NEXT_PUBLIC_GITHUB_URL || "";
@@ -18,21 +30,65 @@ export default function ContactSection() {
     text: string;
   } | null>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
+
+  // Load reCAPTCHA v3 script
+  useEffect(() => {
+    const loadRecaptcha = () => {
+      if (window.grecaptcha) {
+        setRecaptchaLoaded(true);
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = `https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`;
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        window.grecaptcha.ready(() => {
+          setRecaptchaLoaded(true);
+        });
+      };
+      document.head.appendChild(script);
+    };
+
+    if (recaptchaSiteKey) {
+      loadRecaptcha();
+    }
+  }, [recaptchaSiteKey]);
+
+  // Generate reCAPTCHA token
+  const generateRecaptchaToken = async (): Promise<string | null> => {
+    if (!window.grecaptcha || !recaptchaLoaded) {
+      return null;
+    }
+
+    try {
+      const token = await window.grecaptcha.execute(recaptchaSiteKey, {
+        action: "contact_form",
+      });
+      return token;
+    } catch (error) {
+      console.error("reCAPTCHA error:", error);
+      return null;
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (!recaptchaToken) {
-      setMessage({
-        type: "error",
-        text: "Please complete the reCAPTCHA verification.",
-      });
-      return;
-    }
-
     setIsLoading(true);
     setMessage(null);
+
+    // Generate reCAPTCHA token for v3
+    const token = await generateRecaptchaToken();
+    if (!token) {
+      setMessage({
+        type: "error",
+        text: "reCAPTCHA verification failed. Please try again.",
+      });
+      setIsLoading(false);
+      return;
+    }
 
     const form = e.currentTarget;
 
@@ -42,7 +98,7 @@ export default function ContactSection() {
         name: formData.get("name") as string,
         email: formData.get("email") as string,
         message: formData.get("message") as string,
-        recaptchaToken: recaptchaToken,
+        recaptchaToken: token,
       };
 
       const response = await fetch("/api/contact", {
@@ -61,8 +117,6 @@ export default function ContactSection() {
           text: t("successMessage") || "Message sent successfully!",
         });
         form.reset();
-        setRecaptchaToken(null);
-        recaptchaRef.current?.reset();
       } else {
         setMessage({
           type: "error",
@@ -83,10 +137,6 @@ export default function ContactSection() {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleRecaptchaChange = (token: string | null) => {
-    setRecaptchaToken(token);
   };
 
   const socialLinks = [
@@ -158,14 +208,7 @@ export default function ContactSection() {
                 ></textarea>
               </div>
 
-              <div className={styles.formGroup}>
-                <ReCAPTCHA
-                  ref={recaptchaRef}
-                  sitekey={recaptchaSiteKey}
-                  onChange={handleRecaptchaChange}
-                  size="normal"
-                />
-              </div>
+              {/* reCAPTCHA v3 runs invisibly in the background */}
 
               <Button type="submit" variant="primary" disabled={isLoading}>
                 {isLoading ? t("sending") || "Sending..." : t("sendMessage")}
